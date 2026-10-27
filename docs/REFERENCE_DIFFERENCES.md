@@ -57,5 +57,5 @@ credential handling, length handling, failure recovery, and final message
 readback. It is not included or enabled. Never discover tokens from home or
 environment files or deliver merely because rendering succeeded.
 
-The owner must choose licensing before public reuse. Inclusion of sanitized
-source, evidence, or third-party dependency names is not a license grant.
+The project's code and documentation are licensed under the [MIT License](../LICENSE).
+Third-party dependencies retain their respective licenses.

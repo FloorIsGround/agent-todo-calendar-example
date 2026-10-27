@@ -8,4 +8,4 @@ Portable runnable code belongs outside `reference/`. It may adapt the references
 
 Goal: a small student-readable repository that runs locally without Hermes, T3, Google, Discord or an LLM account, while including the real code reference and evidence of ordinary natural-language interaction. Use HTTP/JSON and optional shell/JSON-function-call transport. No dependency on an agent framework. Real Google/Discord paths can be optional explicit integration boundaries instead of copied unsafe credential discovery. Avoid building a full new platform or elaborate compatibility layer. No upstream proxy web UI/collectors bundled: normalized course JSON files are its documented input boundary.
 
-No license grant has been chosen by the owner. Do not invent MIT licensing for these original project files. Mention license selection before public reuse.
+The owner selected the MIT License after preparation. See [LICENSE](LICENSE) for the project's code and documentation license; third-party dependencies retain their respective licenses.

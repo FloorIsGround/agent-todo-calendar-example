@@ -115,4 +115,9 @@ Keep `.venv/`, `.uv-cache/`, `state/`, `data/`, environment files, and any futur
 real data out of public archives. The privacy script checks included text for
 some common secret formats and verifies immutable evidence hashes; it cannot
 certify that arbitrary future content is private-data-free. Review before public
-reuse. The owner must choose a license; this repo grants no invented license.
+reuse.
+
+## License
+
+This project's code and documentation are licensed under the [MIT License](LICENSE).
+Third-party dependencies retain their respective licenses.

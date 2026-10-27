@@ -93,4 +93,4 @@ uv run python -m todo_example.demo
 uv run python scripts/privacy_check.py
 ```
 
-Use a different Python path if needed. The demo removes its disposable store and writes a new local trace; the README also documents running the server, sync, client, and digest individually. The repository owner has not selected a license and must choose one before public reuse.
+Use a different Python path if needed. The demo removes its disposable store and writes a new local trace; the README also documents running the server, sync, client, and digest individually. The project's code and documentation are licensed under the [MIT License](../LICENSE); third-party dependencies retain their respective licenses.
