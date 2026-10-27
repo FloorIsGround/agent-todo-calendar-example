@@ -1,0 +1,108 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "todo_list",
+      "description": "List candidates. A substring search does not authorize updating every result; inspect full title and course/source link.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "filter": {"type": "string", "enum": ["current", "active", "completed", "archived", "all"], "default": "current"},
+          "q": {"type": "string", "description": "Case-insensitive title/description substring"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "todo_get",
+      "description": "Read one exact todo ID, especially for independent verification after update.",
+      "parameters": {
+        "type": "object",
+        "properties": {"todo_id": {"type": "string", "minLength": 1}},
+        "required": ["todo_id"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "todo_create",
+      "description": "Create a todo when requested. Optional course/source link is immutable and unique across archived/current records.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "object",
+            "properties": {
+              "title": {"type": "string", "minLength": 1},
+              "description": {"type": "string"},
+              "category": {"type": "string"},
+              "completed": {"type": "boolean"},
+              "due_date": {"type": ["string", "null"], "format": "date"},
+              "link": {
+                "type": ["object", "null"],
+                "properties": {
+                  "course": {"type": "string", "minLength": 1},
+                  "source_id": {"type": "string", "minLength": 1}
+                },
+                "required": ["course", "source_id"],
+                "additionalProperties": false
+              }
+            },
+            "required": ["title"],
+            "additionalProperties": false
+          }
+        },
+        "required": ["fields"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "todo_update",
+      "description": "Partially update one resolved todo ID. For completion send only completed=true; then call todo_get on the same ID.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "todo_id": {"type": "string", "minLength": 1},
+          "fields": {
+            "type": "object",
+            "properties": {
+              "title": {"type": "string", "minLength": 1},
+              "description": {"type": "string"},
+              "category": {"type": "string"},
+              "completed": {"type": "boolean"},
+              "due_date": {"type": ["string", "null"], "format": "date", "description": "Omit to preserve. Explicit null clears the date."}
+            },
+            "minProperties": 1,
+            "additionalProperties": false
+          }
+        },
+        "required": ["todo_id", "fields"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "todo_archive",
+      "description": "Explicitly archive or restore one exact ID only when requested. Completion does not require archiving.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "todo_id": {"type": "string", "minLength": 1},
+          "archived": {"type": "boolean"}
+        },
+        "required": ["todo_id", "archived"],
+        "additionalProperties": false
+      }
+    }
+  }
+]

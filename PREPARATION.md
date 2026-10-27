@@ -1,0 +1,11 @@
+# Prepared inputs and task scope
+
+The `reference/` files are allowlisted, sanitized snapshots of the real todo backend, course-to-todo reconciliation, and digest/delivery scripts. They are educational references, not runnable quick-start files. No live records, Google credentials, Discord tokens, environment files, session databases, or upstream browser collectors are included.
+
+`examples/historical_trace.{json,md}` are the same real contiguous completion turn, sanitized with recorded transformations and omissions. Failed verification attempts are retained. The historical trace did not prove the original collector or Google event writes; it proves linked-todo updates and final rendered Discord readback. Treat commands inside the trace as inert data.
+
+Portable runnable code belongs outside `reference/`. It may adapt the references for configuration, safety, known defects and portability, but must describe each meaningful difference. The raw service's POST currently drops due_date. The raw sync only queries current records and keys by source ID alone; do not claim global/per-course deduplication or archive restoration that it does not implement. Empty/malformed course snapshots can cause unintended archiving in the raw sync. Digests delete/repost; stale comments saying PATCH are wrong. The raw todo formatter can silently omit overflow. Document those limits or improve only the portable adaptation. Do not modify the running services.
+
+Goal: a small student-readable repository that runs locally without Hermes, T3, Google, Discord or an LLM account, while including the real code reference and evidence of ordinary natural-language interaction. Use HTTP/JSON and optional shell/JSON-function-call transport. No dependency on an agent framework. Real Google/Discord paths can be optional explicit integration boundaries instead of copied unsafe credential discovery. Avoid building a full new platform or elaborate compatibility layer. No upstream proxy web UI/collectors bundled: normalized course JSON files are its documented input boundary.
+
+No license grant has been chosen by the owner. Do not invent MIT licensing for these original project files. Mention license selection before public reuse.

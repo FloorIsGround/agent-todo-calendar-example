@@ -1,0 +1,27 @@
+[
+  {
+    "file": "reference/todo_server.py",
+    "role": "sanitized source snapshot; not the runnable portable version",
+    "sanitization": "private host paths and service/channel identifiers replaced; no credential files copied"
+  },
+  {
+    "file": "reference/course_todo_sync.py",
+    "role": "sanitized source snapshot; not the runnable portable version",
+    "sanitization": "private host paths and service/channel identifiers replaced; no credential files copied"
+  },
+  {
+    "file": "reference/google_calendar_7day_digest.py",
+    "role": "sanitized source snapshot; not the runnable portable version",
+    "sanitization": "private host paths and service/channel identifiers replaced; no credential files copied"
+  },
+  {
+    "file": "reference/todo_digest.py",
+    "role": "sanitized source snapshot; not the runnable portable version",
+    "sanitization": "private host paths and service/channel identifiers replaced; no credential files copied"
+  },
+  {
+    "file": "reference/calendar_digest_run.sh",
+    "role": "sanitized source snapshot; not the runnable portable version",
+    "sanitization": "private host paths and service/channel identifiers replaced; no credential files copied"
+  }
+]

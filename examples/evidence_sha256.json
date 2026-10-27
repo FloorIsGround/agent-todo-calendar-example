@@ -1,0 +1,10 @@
+{
+  "reference/MANIFEST.json": "8de97a0586ab9dda0645f6a7662795db46cb8d8d444cc613f3dc7a46ed3af95b",
+  "reference/calendar_digest_run.sh": "c3d7819ede5158cccb1e9635c24db471fc5c2c0f4a17c56a31b981e4fccafe97",
+  "reference/course_todo_sync.py": "cf58b127724e7c4037154c3a501238d7901299a11c355db68c5f7c47952a0422",
+  "reference/google_calendar_7day_digest.py": "a73e4e7ca015a639d80a57b7acfca22ba1ceee1b84ad741094525f78c297529f",
+  "reference/todo_digest.py": "1e24be96874c050ca346e78e9b438eb7523b80abb76f09bda8500afb296e8bf4",
+  "reference/todo_server.py": "1fd7d6998696e1c1067f1f7fec283137f2dc778c711376c8a837552175ec4cb5",
+  "examples/historical_trace.json": "9b593f48fe1289194f763969fb4487b0aece491bdfad389f087af9b101267a4e",
+  "examples/historical_trace.md": "dd4034e2fb45d21d26ecf20fd97c1d178d70b53d4ac5b1c49cda1a9543eeb3eb"
+}

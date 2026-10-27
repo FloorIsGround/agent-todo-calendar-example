@@ -1,0 +1,552 @@
+{
+  "kind": "synthetic_inputs_new_local_http_execution",
+  "provenance": {
+    "historical_reexecution": false,
+    "inputs": "examples/fictional_courses/DEMO101_FALL.json plus one fictional manual todo",
+    "transport": "Real HTTP on an ephemeral loopback server; disposable store removed",
+    "note": "UUIDs and audit timestamps are generated anew on every run; digest dates are fixed"
+  },
+  "sync_runs": [
+    {
+      "created": 2,
+      "updated": 0,
+      "matched": 0,
+      "archived": 0,
+      "archived_matches": 0,
+      "dry_run": false
+    },
+    {
+      "created": 0,
+      "updated": 0,
+      "matched": 2,
+      "archived": 0,
+      "archived_matches": 0,
+      "dry_run": false
+    },
+    {
+      "created": 0,
+      "updated": 0,
+      "matched": 2,
+      "archived": 0,
+      "archived_matches": 0,
+      "dry_run": false
+    }
+  ],
+  "verified_ids": [
+    "32f5906a-4222-46bb-8f9f-250ba3924776",
+    "4d4edb0c-89de-4fad-946e-2df9f5a9f71c"
+  ],
+  "checks": {
+    "no_duplicates": true,
+    "two_exact_id_readbacks": true,
+    "due_dates_preserved": true,
+    "completion_survives_sync": true,
+    "unrelated_item_unchanged": true,
+    "deterministic_digest": true
+  },
+  "before_digest": "# Schedule from 2026-09-25 (1 day)\nTimes: America/Chicago. '+' pending; '-' completed.\n\n## 2026-09-25\n+ [calendar] 11:59 PM: Module 2: Lab Assignments (DEMO101_FALL)\n+ [calendar] 11:59 PM: Module 2: Quiz (DEMO101_FALL)\n+ [todo] Return fictional library book\n\n## Undated todos\nNone.\n",
+  "after_digest": "# Schedule from 2026-09-25 (1 day)\nTimes: America/Chicago. '+' pending; '-' completed.\n\n## 2026-09-25\n- [calendar] 11:59 PM: Module 2: Lab Assignments (DEMO101_FALL)\n- [calendar] 11:59 PM: Module 2: Quiz (DEMO101_FALL)\n+ [todo] Return fictional library book\n\n## Undated todos\nNone.\n",
+  "http_counts": {
+    "POST": 3,
+    "GET": 10,
+    "PUT": 2
+  },
+  "http_exchanges": [
+    {
+      "method": "POST",
+      "path": "/todos",
+      "request": {
+        "title": "Return fictional library book",
+        "category": "need to do",
+        "due_date": "2026-09-25"
+      },
+      "status": 201,
+      "response": {
+        "title": "Return fictional library book",
+        "description": "",
+        "category": "need to do",
+        "completed": false,
+        "due_date": "2026-09-25",
+        "link": null,
+        "id": "542a5a24-614d-4f34-8f52-465da975972c",
+        "completed_at": null,
+        "archived": false,
+        "archived_at": null,
+        "created_at": "2026-10-27T02:07:01.978677+00:00",
+        "updated_at": "2026-10-27T02:07:01.978677+00:00"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/todos?filter=all",
+      "request": null,
+      "status": 200,
+      "response": [
+        {
+          "title": "Return fictional library book",
+          "description": "",
+          "category": "need to do",
+          "completed": false,
+          "due_date": "2026-09-25",
+          "link": null,
+          "id": "542a5a24-614d-4f34-8f52-465da975972c",
+          "completed_at": null,
+          "archived": false,
+          "archived_at": null,
+          "created_at": "2026-10-27T02:07:01.978677+00:00",
+          "updated_at": "2026-10-27T02:07:01.978677+00:00"
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/todos",
+      "request": {
+        "title": "DEMO101_FALL - Module 2: Lab Assignments",
+        "description": "Imported from fictional-course-export course JSON.",
+        "category": "college",
+        "due_date": "2026-09-25",
+        "link": {
+          "course": "DEMO101_FALL",
+          "source_id": "demo-lab-001"
+        }
+      },
+      "status": 201,
+      "response": {
+        "title": "DEMO101_FALL - Module 2: Lab Assignments",
+        "description": "Imported from fictional-course-export course JSON.",
+        "category": "college",
+        "completed": false,
+        "due_date": "2026-09-25",
+        "link": {
+          "course": "DEMO101_FALL",
+          "source_id": "demo-lab-001"
+        },
+        "id": "32f5906a-4222-46bb-8f9f-250ba3924776",
+        "completed_at": null,
+        "archived": false,
+        "archived_at": null,
+        "created_at": "2026-10-27T02:07:01.981223+00:00",
+        "updated_at": "2026-10-27T02:07:01.981223+00:00"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/todos",
+      "request": {
+        "title": "DEMO101_FALL - Module 2: Quiz",
+        "description": "Imported from fictional-course-export course JSON.",
+        "category": "college",
+        "due_date": "2026-09-25",
+        "link": {
+          "course": "DEMO101_FALL",
+          "source_id": "demo-quiz-001"
+        }
+      },
+      "status": 201,
+      "response": {
+        "title": "DEMO101_FALL - Module 2: Quiz",
+        "description": "Imported from fictional-course-export course JSON.",
+        "category": "college",
+        "completed": false,
+        "due_date": "2026-09-25",
+        "link": {
+          "course": "DEMO101_FALL",
+          "source_id": "demo-quiz-001"
+        },
+        "id": "4d4edb0c-89de-4fad-946e-2df9f5a9f71c",
+        "completed_at": null,
+        "archived": false,
+        "archived_at": null,
+        "created_at": "2026-10-27T02:07:01.982528+00:00",
+        "updated_at": "2026-10-27T02:07:01.982528+00:00"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/todos?filter=all",
+      "request": null,
+      "status": 200,
+      "response": [
+        {
+          "title": "Return fictional library book",
+          "description": "",
+          "category": "need to do",
+          "completed": false,
+          "due_date": "2026-09-25",
+          "link": null,
+          "id": "542a5a24-614d-4f34-8f52-465da975972c",
+          "completed_at": null,
+          "archived": false,
+          "archived_at": null,
+          "created_at": "2026-10-27T02:07:01.978677+00:00",
+          "updated_at": "2026-10-27T02:07:01.978677+00:00"
+        },
+        {
+          "title": "DEMO101_FALL - Module 2: Lab Assignments",
+          "description": "Imported from fictional-course-export course JSON.",
+          "category": "college",
+          "completed": false,
+          "due_date": "2026-09-25",
+          "link": {
+            "course": "DEMO101_FALL",
+            "source_id": "demo-lab-001"
+          },
+          "id": "32f5906a-4222-46bb-8f9f-250ba3924776",
+          "completed_at": null,
+          "archived": false,
+          "archived_at": null,
+          "created_at": "2026-10-27T02:07:01.981223+00:00",
+          "updated_at": "2026-10-27T02:07:01.981223+00:00"
+        },
+        {
+          "title": "DEMO101_FALL - Module 2: Quiz",
+          "description": "Imported from fictional-course-export course JSON.",
+          "category": "college",
+          "completed": false,
+          "due_date": "2026-09-25",
+          "link": {
+            "course": "DEMO101_FALL",
+            "source_id": "demo-quiz-001"
+          },
+          "id": "4d4edb0c-89de-4fad-946e-2df9f5a9f71c",
+          "completed_at": null,
+          "archived": false,
+          "archived_at": null,
+          "created_at": "2026-10-27T02:07:01.982528+00:00",
+          "updated_at": "2026-10-27T02:07:01.982528+00:00"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/todos?filter=all",
+      "request": null,
+      "status": 200,
+      "response": [
+        {
+          "title": "Return fictional library book",
+          "description": "",
+          "category": "need to do",
+          "completed": false,
+          "due_date": "2026-09-25",
+          "link": null,
+          "id": "542a5a24-614d-4f34-8f52-465da975972c",
+          "completed_at": null,
+          "archived": false,
+          "archived_at": null,
+          "created_at": "2026-10-27T02:07:01.978677+00:00",
+          "updated_at": "2026-10-27T02:07:01.978677+00:00"
+        },
+        {
+          "title": "DEMO101_FALL - Module 2: Lab Assignments",
+          "description": "Imported from fictional-course-export course JSON.",
+          "category": "college",
+          "completed": false,
+          "due_date": "2026-09-25",
+          "link": {
+            "course": "DEMO101_FALL",
+            "source_id": "demo-lab-001"
+          },
+          "id": "32f5906a-4222-46bb-8f9f-250ba3924776",
+          "completed_at": null,
+          "archived": false,
+          "archived_at": null,
+          "created_at": "2026-10-27T02:07:01.981223+00:00",
+          "updated_at": "2026-10-27T02:07:01.981223+00:00"
+        },
+        {
+          "title": "DEMO101_FALL - Module 2: Quiz",
+          "description": "Imported from fictional-course-export course JSON.",
+          "category": "college",
+          "completed": false,
+          "due_date": "2026-09-25",
+          "link": {
+            "course": "DEMO101_FALL",
+            "source_id": "demo-quiz-001"
+          },
+          "id": "4d4edb0c-89de-4fad-946e-2df9f5a9f71c",
+          "completed_at": null,
+          "archived": false,
+          "archived_at": null,
+          "created_at": "2026-10-27T02:07:01.982528+00:00",
+          "updated_at": "2026-10-27T02:07:01.982528+00:00"
+        }
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/todos/32f5906a-4222-46bb-8f9f-250ba3924776",
+      "request": {
+        "completed": true
+      },
+      "status": 200,
+      "response": {
+        "title": "DEMO101_FALL - Module 2: Lab Assignments",
+        "description": "Imported from fictional-course-export course JSON.",
+        "category": "college",
+        "completed": true,
+        "due_date": "2026-09-25",
+        "link": {
+          "course": "DEMO101_FALL",
+          "source_id": "demo-lab-001"
+        },
+        "id": "32f5906a-4222-46bb-8f9f-250ba3924776",
+        "completed_at": "2026-10-27T02:07:01.985194+00:00",
+        "archived": false,
+        "archived_at": null,
+        "created_at": "2026-10-27T02:07:01.981223+00:00",
+        "updated_at": "2026-10-27T02:07:01.985194+00:00"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/todos/32f5906a-4222-46bb-8f9f-250ba3924776",
+      "request": null,
+      "status": 200,
+      "response": {
+        "title": "DEMO101_FALL - Module 2: Lab Assignments",
+        "description": "Imported from fictional-course-export course JSON.",
+        "category": "college",
+        "completed": true,
+        "due_date": "2026-09-25",
+        "link": {
+          "course": "DEMO101_FALL",
+          "source_id": "demo-lab-001"
+        },
+        "id": "32f5906a-4222-46bb-8f9f-250ba3924776",
+        "completed_at": "2026-10-27T02:07:01.985194+00:00",
+        "archived": false,
+        "archived_at": null,
+        "created_at": "2026-10-27T02:07:01.981223+00:00",
+        "updated_at": "2026-10-27T02:07:01.985194+00:00"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/todos/4d4edb0c-89de-4fad-946e-2df9f5a9f71c",
+      "request": {
+        "completed": true
+      },
+      "status": 200,
+      "response": {
+        "title": "DEMO101_FALL - Module 2: Quiz",
+        "description": "Imported from fictional-course-export course JSON.",
+        "category": "college",
+        "completed": true,
+        "due_date": "2026-09-25",
+        "link": {
+          "course": "DEMO101_FALL",
+          "source_id": "demo-quiz-001"
+        },
+        "id": "4d4edb0c-89de-4fad-946e-2df9f5a9f71c",
+        "completed_at": "2026-10-27T02:07:01.986948+00:00",
+        "archived": false,
+        "archived_at": null,
+        "created_at": "2026-10-27T02:07:01.982528+00:00",
+        "updated_at": "2026-10-27T02:07:01.986948+00:00"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/todos/4d4edb0c-89de-4fad-946e-2df9f5a9f71c",
+      "request": null,
+      "status": 200,
+      "response": {
+        "title": "DEMO101_FALL - Module 2: Quiz",
+        "description": "Imported from fictional-course-export course JSON.",
+        "category": "college",
+        "completed": true,
+        "due_date": "2026-09-25",
+        "link": {
+          "course": "DEMO101_FALL",
+          "source_id": "demo-quiz-001"
+        },
+        "id": "4d4edb0c-89de-4fad-946e-2df9f5a9f71c",
+        "completed_at": "2026-10-27T02:07:01.986948+00:00",
+        "archived": false,
+        "archived_at": null,
+        "created_at": "2026-10-27T02:07:01.982528+00:00",
+        "updated_at": "2026-10-27T02:07:01.986948+00:00"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/todos?filter=all",
+      "request": null,
+      "status": 200,
+      "response": [
+        {
+          "title": "Return fictional library book",
+          "description": "",
+          "category": "need to do",
+          "completed": false,
+          "due_date": "2026-09-25",
+          "link": null,
+          "id": "542a5a24-614d-4f34-8f52-465da975972c",
+          "completed_at": null,
+          "archived": false,
+          "archived_at": null,
+          "created_at": "2026-10-27T02:07:01.978677+00:00",
+          "updated_at": "2026-10-27T02:07:01.978677+00:00"
+        },
+        {
+          "title": "DEMO101_FALL - Module 2: Lab Assignments",
+          "description": "Imported from fictional-course-export course JSON.",
+          "category": "college",
+          "completed": true,
+          "due_date": "2026-09-25",
+          "link": {
+            "course": "DEMO101_FALL",
+            "source_id": "demo-lab-001"
+          },
+          "id": "32f5906a-4222-46bb-8f9f-250ba3924776",
+          "completed_at": "2026-10-27T02:07:01.985194+00:00",
+          "archived": false,
+          "archived_at": null,
+          "created_at": "2026-10-27T02:07:01.981223+00:00",
+          "updated_at": "2026-10-27T02:07:01.985194+00:00"
+        },
+        {
+          "title": "DEMO101_FALL - Module 2: Quiz",
+          "description": "Imported from fictional-course-export course JSON.",
+          "category": "college",
+          "completed": true,
+          "due_date": "2026-09-25",
+          "link": {
+            "course": "DEMO101_FALL",
+            "source_id": "demo-quiz-001"
+          },
+          "id": "4d4edb0c-89de-4fad-946e-2df9f5a9f71c",
+          "completed_at": "2026-10-27T02:07:01.986948+00:00",
+          "archived": false,
+          "archived_at": null,
+          "created_at": "2026-10-27T02:07:01.982528+00:00",
+          "updated_at": "2026-10-27T02:07:01.986948+00:00"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/todos?filter=all",
+      "request": null,
+      "status": 200,
+      "response": [
+        {
+          "title": "Return fictional library book",
+          "description": "",
+          "category": "need to do",
+          "completed": false,
+          "due_date": "2026-09-25",
+          "link": null,
+          "id": "542a5a24-614d-4f34-8f52-465da975972c",
+          "completed_at": null,
+          "archived": false,
+          "archived_at": null,
+          "created_at": "2026-10-27T02:07:01.978677+00:00",
+          "updated_at": "2026-10-27T02:07:01.978677+00:00"
+        },
+        {
+          "title": "DEMO101_FALL - Module 2: Lab Assignments",
+          "description": "Imported from fictional-course-export course JSON.",
+          "category": "college",
+          "completed": true,
+          "due_date": "2026-09-25",
+          "link": {
+            "course": "DEMO101_FALL",
+            "source_id": "demo-lab-001"
+          },
+          "id": "32f5906a-4222-46bb-8f9f-250ba3924776",
+          "completed_at": "2026-10-27T02:07:01.985194+00:00",
+          "archived": false,
+          "archived_at": null,
+          "created_at": "2026-10-27T02:07:01.981223+00:00",
+          "updated_at": "2026-10-27T02:07:01.985194+00:00"
+        },
+        {
+          "title": "DEMO101_FALL - Module 2: Quiz",
+          "description": "Imported from fictional-course-export course JSON.",
+          "category": "college",
+          "completed": true,
+          "due_date": "2026-09-25",
+          "link": {
+            "course": "DEMO101_FALL",
+            "source_id": "demo-quiz-001"
+          },
+          "id": "4d4edb0c-89de-4fad-946e-2df9f5a9f71c",
+          "completed_at": "2026-10-27T02:07:01.986948+00:00",
+          "archived": false,
+          "archived_at": null,
+          "created_at": "2026-10-27T02:07:01.982528+00:00",
+          "updated_at": "2026-10-27T02:07:01.986948+00:00"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/todos/542a5a24-614d-4f34-8f52-465da975972c",
+      "request": null,
+      "status": 200,
+      "response": {
+        "title": "Return fictional library book",
+        "description": "",
+        "category": "need to do",
+        "completed": false,
+        "due_date": "2026-09-25",
+        "link": null,
+        "id": "542a5a24-614d-4f34-8f52-465da975972c",
+        "completed_at": null,
+        "archived": false,
+        "archived_at": null,
+        "created_at": "2026-10-27T02:07:01.978677+00:00",
+        "updated_at": "2026-10-27T02:07:01.978677+00:00"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/todos/32f5906a-4222-46bb-8f9f-250ba3924776",
+      "request": null,
+      "status": 200,
+      "response": {
+        "title": "DEMO101_FALL - Module 2: Lab Assignments",
+        "description": "Imported from fictional-course-export course JSON.",
+        "category": "college",
+        "completed": true,
+        "due_date": "2026-09-25",
+        "link": {
+          "course": "DEMO101_FALL",
+          "source_id": "demo-lab-001"
+        },
+        "id": "32f5906a-4222-46bb-8f9f-250ba3924776",
+        "completed_at": "2026-10-27T02:07:01.985194+00:00",
+        "archived": false,
+        "archived_at": null,
+        "created_at": "2026-10-27T02:07:01.981223+00:00",
+        "updated_at": "2026-10-27T02:07:01.985194+00:00"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/todos/4d4edb0c-89de-4fad-946e-2df9f5a9f71c",
+      "request": null,
+      "status": 200,
+      "response": {
+        "title": "DEMO101_FALL - Module 2: Quiz",
+        "description": "Imported from fictional-course-export course JSON.",
+        "category": "college",
+        "completed": true,
+        "due_date": "2026-09-25",
+        "link": {
+          "course": "DEMO101_FALL",
+          "source_id": "demo-quiz-001"
+        },
+        "id": "4d4edb0c-89de-4fad-946e-2df9f5a9f71c",
+        "completed_at": "2026-10-27T02:07:01.986948+00:00",
+        "archived": false,
+        "archived_at": null,
+        "created_at": "2026-10-27T02:07:01.982528+00:00",
+        "updated_at": "2026-10-27T02:07:01.986948+00:00"
+      }
+    }
+  ]
+}

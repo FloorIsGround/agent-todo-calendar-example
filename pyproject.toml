@@ -1,0 +1,9 @@
+[project]
+name = "todo-calendar-example"
+version = "0.1.0"
+description = "A local HTTP teaching example adapted from sanitized todo/calendar scripts"
+requires-python = ">=3.11"
+dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1"]
+
+[tool.uv]
+package = false

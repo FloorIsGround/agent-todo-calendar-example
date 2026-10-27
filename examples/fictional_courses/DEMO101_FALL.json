@@ -1,0 +1,19 @@
+{
+  "displayId": "DEMO101_FALL",
+  "source": "fictional-course-export",
+  "dueDateItems": [
+    {
+      "itemSourceId": "demo-lab-001",
+      "title": "Module 2: Lab Assignments",
+      "eventType": "Lab",
+      "startDate": "2026-09-24T08:00:00-05:00",
+      "endDate": "2026-09-25T23:59:00-05:00"
+    },
+    {
+      "itemSourceId": "demo-quiz-001",
+      "title": "Module 2: Quiz",
+      "eventType": "Quiz",
+      "endDate": "2026-09-25T23:59:00-05:00"
+    }
+  ]
+}
