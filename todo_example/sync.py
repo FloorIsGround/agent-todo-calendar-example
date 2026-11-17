@@ -11,7 +11,12 @@ from .server import link_key
 
 
 def reconcile(client: Client, directory: Path, *, dry_run: bool = False) -> dict:
-    items = [item for item in load_courses(directory) if actionable(item)]
+    return reconcile_items(client, load_courses(directory), dry_run=dry_run)
+
+
+def reconcile_items(client: Client, items: list[dict], *, dry_run: bool = False) -> dict:
+    """Reconcile an already validated course snapshot, reusable by scheduled jobs."""
+    items = [item for item in items if actionable(item)]
     todos = client.list("all")
     existing = {}
     for todo in todos:
