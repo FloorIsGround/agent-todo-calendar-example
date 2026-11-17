@@ -31,6 +31,7 @@ execution, with no claim to have reproduced the private environment.
 | Google fetch, token refresh, system timezone discovery, host/path footer | Local normalized course inputs, explicit date/timezone, no identity footer or credential discovery |
 | Todo formatter can silently omit overflow | Selected local text output is complete with no service character cap |
 | Reference Discord delivery deletes old messages and posts new ones | Rendering only, no delivery code in the portable runtime |
+| Cron wrapper depends on harness script and virtualenv paths | Ordinary cron invokes a repo-local command with explicit inputs, timezone and output; overlapping ticks skip and the digest file is replaced atomically |
 
 The raw calendar delivery section still has a stale "edit in place" comment;
 its actual implementation uses DELETE then POST. The todo delivery script also
@@ -39,6 +40,12 @@ Deleting before posting can lose the previous visible message if posting fails.
 Do not copy stale delivery documentation or infer safe replacement semantics.
 
 ## Integration boundaries
+
+Scheduling is optional and independent of any agent harness. The maintained
+[`scripts/calendar_digest_run.sh`](../scripts/calendar_digest_run.sh) invokes
+one sync-and-digest run; [Scheduling](SCHEDULING.md) includes a standard user-cron
+example. It writes local Markdown only. The older `reference/` scripts retain
+their original harness-specific paths as immutable sanitized evidence.
 
 The upstream collector/proxy is not bundled. Its output must be normalized to
 the strict course JSON contract in `API.md`. This repo does not fetch LMS pages

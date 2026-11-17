@@ -81,12 +81,14 @@ normalized course JSON -> sync ----POST/PUT----> local FastAPI -> JSON store
                               <-------GET-----/
 agent / CLI ------------------GET/PUT--------/
 course JSON + todo GET -> deterministic digest -> stdout only
+ordinary cron -> one-shot job: sync + digest -> local Markdown file
 ```
 
 * [Technical overview](docs/TECHNICAL_OVERVIEW.md): how each script works and how data moves through the system.
 * [Agent instructions](docs/AGENT_INSTRUCTIONS.md): how to match, update, and verify.
 * [API and input contract](docs/API.md): endpoints, JSON examples, and tool dispatch.
 * [JSON tool schemas](docs/tool_schemas.json): usable function definitions.
+* [Scheduling](docs/SCHEDULING.md): run sync and digest with ordinary cron.
 * [Reference differences](docs/REFERENCE_DIFFERENCES.md): intentional changes,
   historical evidence limits, and optional Google/Discord boundaries.
 
@@ -94,6 +96,26 @@ The implementation lives in `todo_example/`. `server.py` adapts the reference
 backend, `sync.py` and `courses.py` adapt reconciliation, and `digest.py` adapts
 the calendar/manual-todo merge. `client.py` uses only Python's standard library.
 `demo.py` provides disposable HTTP execution; `tests/` exercises the boundaries.
+
+## Run on a schedule
+
+On Linux or macOS, the one-shot job syncs course items and saves a digest using
+the same local API. With the API running as shown above:
+
+```sh
+./scripts/calendar_digest_run.sh --courses examples/fictional_courses --output state/calendar-digest.md --timezone America/Chicago
+```
+
+It uses the prepared `.venv`, starts the window at today in the selected
+timezone, skips overlapping runs for the same output, and atomically replaces
+the file after success. Failures leave the previous digest in place and exit
+nonzero. The fixture's dates are fixed in September 2026; pass
+`--start 2026-09-25` to see those assignments, or supply current normalized input.
+
+See [Scheduling](docs/SCHEDULING.md) and the
+[user-crontab example](deploy/calendar-digest.crontab.example) for setup. The
+command needs no agent harness, credentials, or inference. Scheduling is enabled
+by installing a cron entry yourself.
 
 ## Limits and public reuse
 
@@ -104,7 +126,8 @@ the in-process lock and atomic file replacement do not coordinate multiple
 processes or make a multi-request sync transactional. A failed sync can leave
 some completed upserts; rerunning converges using stable links. Back up any
 practice data you care about. There is no deletion endpoint, automatic archive,
-automatic archive restoration, scheduler, collector, or delivery integration.
+automatic archive restoration, collector, or external delivery integration.
+The optional job runs under an external scheduler such as cron.
 
 Only the requested digest date window and undated todos are rendered. Output is
 not truncated to a message-service limit. Imported course dates require stable

@@ -2,7 +2,7 @@
 
 This repository shows how a request in ordinary language can become a small, verifiable change to a local todo service. A course assignment is represented by a todo, and its completion is reflected in a calendar-style text digest. Completing that todo does not complete the student's assignment or delete, complete, or otherwise modify a Google Calendar event.
 
-The portable example runs without Hermes, T3, an agent framework, or an LLM account. An agent is optional: a shell, an HTTP client, or any harness capable of calling JSON functions can drive the same API. The [API contract](API.md) and [agent instructions](AGENT_INSTRUCTIONS.md) describe the operations and the matching rules.
+The portable example runs without an agent framework or an LLM account. An agent is optional: a shell, an HTTP client, or any harness capable of calling JSON functions can drive the same API. The [API contract](API.md) and [agent instructions](AGENT_INSTRUCTIONS.md) describe the operations and the matching rules. Ordinary cron can also invoke the [one-shot sync and digest job](SCHEDULING.md).
 
 ```text
 User's request -> optional agent harness -> JSON tool calls / HTTP client
@@ -62,6 +62,8 @@ The service is a single-user teaching tool with no authentication. It binds to l
 - [todo_example/courses.py](../todo_example/courses.py): `load_courses()` validates snapshots, `parse_when()` handles dates and offsets, and `actionable()` applies the import heuristic.
 - [todo_example/sync.py](../todo_example/sync.py): `reconcile()` compares validated items with all stored links and issues only needed create or metadata update requests. `--dry-run` still reads the API.
 - [todo_example/digest.py](../todo_example/digest.py): `render()` joins course items to todo completion by the full link, includes manual and unrepresented linked todos, sorts the selected window, and returns text. It does not deliver messages.
+- [todo_example/job.py](../todo_example/job.py): `run_job()` reuses one validated course snapshot for sync and digest, defaults to today in the chosen timezone, locks the output across overlapping jobs, and atomically saves the result. Failure preserves the previous digest; sync requests remain nontransactional.
+- [scripts/calendar_digest_run.sh](../scripts/calendar_digest_run.sh): invokes the job in the repository's prepared environment from any working directory. [Scheduling](SCHEDULING.md) documents the ordinary user-crontab example.
 - [todo_example/demo.py](../todo_example/demo.py): `local_server()` starts a disposable loopback server; `run_demo()` syncs fictional inputs, completes two linked records, reads them back, checks preservation, and renders before/after text. The default trace output is `state/demo_trace.json`.
 - [todo_example/__init__.py](../todo_example/__init__.py) identifies the package. [tests/test_example.py](../tests/test_example.py) defines disposable-store and loopback HTTP checks for validation, reconciliation, dates, identity, digest output, and tool dispatch. [scripts/privacy_check.py](../scripts/privacy_check.py) checks configured text patterns and stored evidence hashes; it cannot prove that future content is safe to publish.
 
@@ -73,7 +75,7 @@ The files in [reference/](../reference/) are later sanitized source snapshots, n
 - [reference/course_todo_sync.py](../reference/course_todo_sync.py): `load_course_items()` reads proxy snapshots, `is_actionable()` filters them, and `reconcile()` creates or archives todos. It extracts source IDs from descriptions and queries only current records, matching by source ID alone despite its per-course deduplication claim. Missing or malformed snapshots can lead to unintended archiving.
 - [reference/google_calendar_7day_digest.py](../reference/google_calendar_7day_digest.py): `fetch_events()` reads Google Calendar, while `fetch_course_items()`, `fetch_todos()`, and `make_digest()` merge sources and apply completion markers. `deliver_digest()` deletes the previous Discord message before posting a new one; a failed post can leave no previous message. Its reference Google access is read-only.
 - [reference/todo_digest.py](../reference/todo_digest.py): `fetch_todos()` excludes course-linked descriptions, `format_digest()` groups remaining current todos, and `deliver_digest()` uses Discord delete/repost. It skips delivery when the content hash is unchanged; its length-limiting formatter can silently omit items.
-- [reference/calendar_digest_run.sh](../reference/calendar_digest_run.sh): the original shell wrapper runs the course sync, then generates and delivers the seven-day digest, stopping on a command failure.
+- [reference/calendar_digest_run.sh](../reference/calendar_digest_run.sh): the original shell wrapper runs the course sync, then generates and delivers the seven-day digest, stopping on a command failure. Its harness-specific paths are preserved as archival evidence; use `scripts/calendar_digest_run.sh` for the maintained setup.
 
 Google credential handling and Discord delivery occur only in reference code, not in the portable package. See [reference differences](REFERENCE_DIFFERENCES.md) for the full comparison and integration boundaries.
 

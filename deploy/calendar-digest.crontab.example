@@ -1,0 +1,8 @@
+# Example user crontab. Replace /path/to/agent-todo-calendar-example everywhere.
+# Create state/ first, prepare .venv, and run the local API before enabling this.
+# Edit with crontab -e; merge this entry with any existing jobs.
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+
+# A seven-day window starting today in the explicit display timezone.
+*/15 * * * * /path/to/agent-todo-calendar-example/scripts/calendar_digest_run.sh --courses /path/to/agent-todo-calendar-example/examples/fictional_courses --output /path/to/agent-todo-calendar-example/state/calendar-digest.md --timezone America/Chicago >> /path/to/agent-todo-calendar-example/state/calendar-digest-cron.log 2>&1
